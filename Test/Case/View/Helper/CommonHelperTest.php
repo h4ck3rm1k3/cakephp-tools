@@ -13,9 +13,6 @@ class CommonHelperTest extends MyCakeTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		if (!Configure::read('App.fullBaseUrl')) {
-			Configure::write('App.fullBaseUrl', 'http://localhost');
-		}
 
 		$View = new View(null);
 		$this->Common = new CommonHelper($View);
@@ -27,7 +24,7 @@ class CommonHelperTest extends MyCakeTestCase {
 	public function testMetaCanonical() {
 		$is = $this->Common->metaCanonical('/some/url/param1');
 		$this->out(h($is));
-		$this->assertEquals('<link href="' . Configure::read('App.fullBaseUrl') . $this->Html->url('/some/url/param1') . '" rel="canonical" />', trim($is));
+		$this->assertEquals('<link href="' . $this->Html->url('/some/url/param1', true) . '" rel="canonical" />', trim($is));
 	}
 
 	/**

@@ -102,10 +102,9 @@ class CommonHelper extends AppHelper {
 	 * @param boolean $full
 	 * @return string htmlMarkup
 	 */
-	public function metaCanonical($url = null, $full = false) {
-		$canonical = $this->Html->url($url, $full);
+	public function metaCanonical($url = null) {
 		$options = array('rel' => 'canonical', 'type' => null, 'title' => null);
-		return $this->Html->meta('canonical', $canonical, $options);
+		return $this->Html->meta('canonical', $url, $options);
 	}
 
 	/**
@@ -119,9 +118,7 @@ class CommonHelper extends AppHelper {
 	 * etc
 	 * @return string htmlMarkup
 	 */
-	public function metaAlternate($url, $lang, $full = false) {
-		$canonical = $this->Html->url($url, $full);
-		//return $this->Html->meta('canonical', $canonical, array('rel'=>'canonical', 'type'=>null, 'title'=>null));
+	public function metaAlternate($url, $lang) {
 		$lang = (array)$lang;
 		$res = array();
 		foreach ($lang as $language => $countries) {
@@ -132,8 +129,8 @@ class CommonHelper extends AppHelper {
 			}
 			$countries = (array)$countries;
 			foreach ($countries as $country) {
-				$l = $language . $country;
-				$options = array('rel' => 'alternate', 'hreflang' => $l, 'type' => null, 'title' => null);
+				$hreflang = $language . $country;
+				$options = array('rel' => 'alternate', 'hreflang' => $hreflang, 'type' => null, 'title' => null);
 				$res[] = $this->Html->meta('alternate', $url, $options) . PHP_EOL;
 			}
 		}
@@ -159,7 +156,7 @@ class CommonHelper extends AppHelper {
 			$title = 'Diesen Feed abonnieren';
 		}
 
-		return sprintf($tags['meta'], $title, $this->url($url));
+		return sprintf($tags['meta'], $title, $this->url($url, true));
 	}
 
 	/**
