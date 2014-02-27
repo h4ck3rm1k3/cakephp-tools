@@ -24,7 +24,7 @@ before_script:
   - git clone https://github.com/FriendsOfCake/travis.git --depth 1 ../travis
   - git clone https://github.com/dereuromark/tools-app.git --depth 1 ../tools-app
   - ../travis/before_script.sh
-  - cp -R ../tools-app ./
+  - cp -R ../tools-app/* ./cakephp/app/
 
 script:
   - ../travis/script.sh
