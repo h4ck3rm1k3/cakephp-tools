@@ -33,7 +33,7 @@ class InlineCssLib {
 	 * startup
 	 */
 	public function __construct($settings = array()) {
-		$this->_defaults['correctUtf8'] = version_compare(PHP_VERSION, '5.4.0') >= 0;
+		//$this->_defaults['correctUtf8'] = version_compare(PHP_VERSION, '5.4.0') >= 0;
 
 		$defaults = am($this->_defaults, (array) Configure::read('InlineCss'));
 		$this->settings = array_merge($defaults, $settings);
