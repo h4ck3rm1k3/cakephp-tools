@@ -8,19 +8,22 @@ Please note: New functionality has been tested against 2.x (current master and d
 Installing the Plugin is pretty much as with every other CakePHP Plugin.
 
 * Put the files in `APP/Plugin/Tools`
+```sh
+git submodule add https://github.com/h4ck3rm1k3/cakephp-tools.git app/Plugin/Tools
+```
 * Make sure you have `CakePlugin::load('Tools')` or `CakePlugin::loadAll()` in your bootstrap
-
-Tip: You can also use packagist now @ https://packagist.org/packages/dereuromark/tools-cakephp
-
-That's it. It should be up and running.
-
-## The basics
 
 In case you want the Tools bootstrap file included (recommended), you can do that in your `APP/Config/bootstrap.php` with
 
 ```php
 CakePlugin::load('Tools', array('bootstrap' => true));
 ```
+
+Tip: You can also use packagist now @ https://packagist.org/packages/dereuromark/tools-cakephp
+
+That's it. It should be up and running.
+
+## The basics
 
 This can also be done after using `CakePlugin::loadAll()` - without problems.
 
